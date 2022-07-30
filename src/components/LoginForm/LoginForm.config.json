@@ -1,0 +1,14 @@
+[
+  {
+    "type": "email",
+    "name": "email",
+    "title": "EMAIL",
+    "required": true
+  },
+  {
+    "type": "password",
+    "name": "password",
+    "title": "PASSWORD",
+    "required": true
+  }
+]
