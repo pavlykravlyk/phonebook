@@ -4,7 +4,7 @@ import type { store } from 'redux/store';
 type RootState = ReturnType<typeof store.getState>;
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: 'https://connections-api.herokuapp.com/contacts/',
+  baseUrl: 'https://connections-api.goit.global/',
 
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).authSlice.token;
@@ -43,7 +43,7 @@ export const contactApi = createApi({
   endpoints: builder => ({
     getContacts: builder.query<ContactResponse[], void>({
       query: () => ({
-        url: ``,
+        url: `contacts`,
         method: 'GET',
       }),
       providesTags: ['Contact'],
@@ -51,7 +51,7 @@ export const contactApi = createApi({
 
     deleteContact: builder.mutation<void, string>({
       query: id => ({
-        url: `${id}`,
+        url: `contacts/${id}`,
         method: 'DELETE',
       }),
       invalidatesTags: ['Contact'],
@@ -59,7 +59,7 @@ export const contactApi = createApi({
 
     addContact: builder.mutation<ContactResponse, ContactRequest>({
       query: contact => ({
-        url: ``,
+        url: `contacts`,
         method: 'POST',
         body: contact,
       }),
@@ -68,7 +68,7 @@ export const contactApi = createApi({
 
     updateContact: builder.mutation<ContactResponse, Contact>({
       query: ({ id, name, number }) => ({
-        url: `${id}`,
+        url: `contacts/${id}`,
         method: 'PATCH',
         body: { name, number },
       }),

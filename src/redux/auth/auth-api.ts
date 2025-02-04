@@ -4,7 +4,7 @@ import { store } from 'redux/store';
 type RootState = ReturnType<typeof store.getState>;
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: 'https://connections-api.herokuapp.com/users/',
+  baseUrl: 'https://connections-api.goit.global/',
 
   prepareHeaders: (headers, { getState, endpoint }) => {
     const token = (getState() as RootState).authSlice.token;
@@ -45,7 +45,7 @@ export const authApi = createApi({
   endpoints: builder => ({
     register: builder.mutation<UserResponse, RegisterRequest>({
       query: body => ({
-        url: `signup`,
+        url: `users/signup`,
         method: 'POST',
         body: body,
       }),
@@ -54,7 +54,7 @@ export const authApi = createApi({
 
     login: builder.mutation<UserResponse, LoginRequest>({
       query: credentials => ({
-        url: `login`,
+        url: `users/login`,
         method: 'POST',
         body: credentials,
       }),
@@ -63,7 +63,7 @@ export const authApi = createApi({
 
     logout: builder.mutation<void, void>({
       query: () => ({
-        url: `logout`,
+        url: `users/logout`,
         method: 'POST',
       }),
       invalidatesTags: [{ type: 'User' }],
@@ -71,7 +71,7 @@ export const authApi = createApi({
 
     current: builder.mutation<User, void>({
       query: () => ({
-        url: `current`,
+        url: `users/current`,
         method: 'GET',
       }),
       invalidatesTags: [{ type: 'User' }],
