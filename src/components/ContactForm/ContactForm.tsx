@@ -36,10 +36,12 @@ const Phonebook = () => {
   useEffect(() => {
     isAdded && toast.success(`${contact.name} has successfully added`);
     setContact(initialState);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAdded]);
 
   useEffect(() => {
     isError && toast.error(`${contact.name} can't be added`);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isError]);
 
   type ContactName = keyof typeof contact;
