@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkphonebook=self.webpackChunkphonebook||[]).push([[544],{4544:function(n,e,o){o.r(e),o.d(e,{default:function(){return h}});var r,t=o(168),u=o(6031).ZP.h1(r||(r=(0,t.Z)(["\n  text-transform: uppercase;\n"]))),c=o(3329),h=function(){return(0,c.jsx)(u,{children:"phonebook"})}}}]);
-//# sourceMappingURL=544.3bef98df.chunk.js.map
