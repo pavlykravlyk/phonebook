@@ -6,6 +6,7 @@ import Section from './Section';
 import UserMenu from './UserMenu';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
+import NotFound from './NotFound';
 
 const Phonebook = lazy(() => import('./ContactForm'));
 const ContactList = lazy(() => import('./ContactList'));
@@ -25,4 +26,5 @@ export {
   UserMenu,
   PrivateRoute,
   PublicRoute,
+  NotFound,
 };

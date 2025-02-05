@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { getIsRefreshing } from 'redux/auth';
 import { useAppSelector, useAuth } from 'redux/hooks';
 import { ToastContainer } from 'react-toastify';
@@ -17,6 +17,7 @@ import {
   Home,
   LoginForm,
   RegisterForm,
+  NotFound,
 } from './components';
 
 const App = () => {
@@ -52,6 +53,8 @@ const App = () => {
                   <Route path="/create" element={<PrivateRoute />}>
                     <Route index element={<Phonebook />} />
                   </Route>
+                    
+                  <Route path="*" element={<NotFound/>}></Route>
                 </Routes>
               </Section>
             </Suspense>
