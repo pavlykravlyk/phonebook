@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useLoginMutation } from 'redux/auth';
+import { useLoginMutation } from '../../redux/auth';
 import LOGIN_FORM_CONFIG from './LoginForm.config.json';
 import { ThreeDots } from 'react-loader-spinner';
 import { toast } from 'react-toastify';

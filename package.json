@@ -1,60 +1,36 @@
 {
   "name": "phonebook",
-  "version": "0.1.0",
   "private": true,
-  "homepage": "https://pavlykravlyk.github.io/phonebook/",
-  "dependencies": {
-    "@jamesives/github-pages-deploy-action": "^4.3.3",
-    "@reduxjs/toolkit": "^1.8.3",
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.3.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.11.38",
-    "@types/react": "^18.0.12",
-    "@types/react-dom": "^18.0.5",
-    "@types/react-toastify": "^4.1.0",
-    "gh-pages": "^4.0.0",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
-    "react-loader-spinner": "^5.1.7-beta.1",
-    "react-redux": "^8.0.2",
-    "react-router-dom": "^6.3.0",
-    "react-scripts": "5.0.1",
-    "react-toastify": "^9.0.7",
-    "redux-persist": "^6.0.0",
-    "styled-components": "^5.3.5",
-    "typescript": "^4.7.3",
-    "web-vitals": "^2.1.4"
-  },
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.5.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-loader-spinner": "^6.1.6",
+    "react-redux": "^9.2.0",
+    "react-router-dom": "^6.29.0",
+    "react-toastify": "^11.0.3",
+    "redux-persist": "^6.0.0",
+    "styled-components": "^6.1.15"
   },
   "devDependencies": {
-    "@types/react-router-dom": "^5.3.3",
-    "@types/styled-components": "^5.1.25"
+    "@eslint/js": "^9.19.0",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.19.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.18",
+    "globals": "^15.14.0",
+    "typescript": "~5.7.2",
+    "typescript-eslint": "^8.22.0",
+    "vite": "^6.1.0"
   }
 }

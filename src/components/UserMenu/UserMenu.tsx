@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useLogoutMutation, getUserName } from 'redux/auth';
+import { useLogoutMutation, getUserName } from '../../redux/auth';
 import { UserName, LogOutButton } from './UserMenu.styled';
 import { ThreeDots } from 'react-loader-spinner';
 import { toast } from 'react-toastify';

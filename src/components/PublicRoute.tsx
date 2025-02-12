@@ -1,6 +1,6 @@
 import { Navigate, Outlet } from 'react-router-dom';
-import { useAppSelector } from 'redux/hooks';
-import { getIsLoggedIn } from 'redux/auth';
+import { useAppSelector } from '../redux/hooks';
+import { getIsLoggedIn } from '../redux/auth';
 
 interface PublicRouteProps {
 

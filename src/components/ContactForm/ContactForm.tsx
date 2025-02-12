@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
-import { useAddContactMutation, useGetContactsQuery } from 'redux/contact/contact-api';
+import { useAddContactMutation, useGetContactsQuery } from '../../redux/contact/contact-api';
 import FORM_CONFIG from './ContactForm.config.json';
 import { toast } from 'react-toastify';
 import { ThreeDots } from 'react-loader-spinner';

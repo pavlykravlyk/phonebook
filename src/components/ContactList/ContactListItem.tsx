@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useDeleteContactMutation, useUpdateContactMutation } from 'redux/contact/contact-api';
+import { useDeleteContactMutation, useUpdateContactMutation } from '../../redux/contact/contact-api';
 import { ThreeDots } from 'react-loader-spinner';
 import { toast } from 'react-toastify';
 import FORM_CONFIG from '../ContactForm/ContactForm.config.json';

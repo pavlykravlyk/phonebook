@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useRegisterMutation } from 'redux/auth';
+import { useRegisterMutation } from '../../redux/auth';
 import REGISTER_FORM_CONFIG from './RegisterForm.config.json';
 import { toast } from 'react-toastify';
 import { ThreeDots } from 'react-loader-spinner';

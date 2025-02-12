@@ -7,7 +7,7 @@ import { store, persistor } from './redux/store';
 import App from './App';
 import './index.css';
 
-const appRoot = ReactDOM.createRoot(document.getElementById('app-root') as HTMLElement);
+const appRoot = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
 appRoot.render(
   <StrictMode>

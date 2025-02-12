@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { store } from 'redux/store';
+import { store } from '../store';
 
 type RootState = ReturnType<typeof store.getState>;
 

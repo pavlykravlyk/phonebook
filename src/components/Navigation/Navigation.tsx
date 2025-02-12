@@ -1,6 +1,6 @@
-import { useAppSelector } from 'redux/hooks';
-import { getIsLoggedIn } from 'redux/auth';
-import { UserMenu } from 'components';
+import { useAppSelector } from '../../redux/hooks';
+import { getIsLoggedIn } from '../../redux/auth';
+import UserMenu from '../UserMenu';
 import { Header, MainNav, List, Item, Link } from './Navigation.styled';
 
 const Navigation = () => {

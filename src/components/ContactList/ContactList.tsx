@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector, useContacts } from 'redux/hooks';
-import { getFilterValue, setFilter } from 'redux/contact';
+import { useAppDispatch, useAppSelector, useContacts } from '../../redux/hooks';
+import { getFilterValue, setFilter } from '../../redux/contact';
 import ContactListItem from './ContactListItem';
 import { ThreeDots } from 'react-loader-spinner';
 import { ContactList, ContactMessage, Label, Input } from './ContactList.styled';

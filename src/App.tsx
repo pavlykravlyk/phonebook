@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { getIsRefreshing } from 'redux/auth';
-import { useAppSelector, useAuth } from 'redux/hooks';
+import { getIsRefreshing } from './redux/auth';
+import { useAppSelector, useAuth } from './redux/hooks';
 import { ToastContainer } from 'react-toastify';
 import { ThreeDots } from 'react-loader-spinner';
 import 'react-toastify/dist/ReactToastify.css';

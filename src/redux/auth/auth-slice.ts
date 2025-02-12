@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { register, login, logout, current } from './auth-api';
-import { store } from 'redux/store';
+import { store } from '../store';
 
 type RootState = ReturnType<typeof store.getState>;
 
