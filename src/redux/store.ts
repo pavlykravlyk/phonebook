@@ -14,8 +14,6 @@ import storage from 'redux-persist/lib/storage';
 import { authSlice, authApi } from './auth';
 import { contactApi, contactSlice } from './contact';
 
-const rootReducer = combineReducers({});
-
 const authPersistConfig = {
   key: 'auth',
   storage,
@@ -24,22 +22,23 @@ const authPersistConfig = {
 
 const authSliceReducer = persistReducer(authPersistConfig, authSlice.reducer);
 
-export const store = configureStore({
-  reducer: {
+const rootReducer = combineReducers({
     [authApi.reducerPath]: authApi.reducer,
     [authSlice.name]: authSliceReducer,
     [contactApi.reducerPath]: contactApi.reducer,
     [contactSlice.name]: contactSlice.reducer,
-  },
-  middleware: getDefaultMiddleware => [
-    ...getDefaultMiddleware({
+  });
+
+export const store = configureStore({
+  reducer: rootReducer,
+  middleware: getDefaultMiddleware => 
+    getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }),
-    contactApi.middleware,
-    authApi.middleware,
-  ],
+    })
+    .concat(contactApi.middleware)
+    .concat(authApi.middleware),
   devTools: process.env.NODE_ENV === 'development',
 });
 
