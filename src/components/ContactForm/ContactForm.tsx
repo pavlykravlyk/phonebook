@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
-import { useAddContactMutation, useGetContactsQuery } from '../../redux/contact/contact-api';
+import {
+  useAddContactMutation, useGetContactsQuery
+
+} from '../../redux/contact/contact-api';
 import FORM_CONFIG from './ContactForm.config.json';
 import { toast } from 'react-toastify';
 import { ThreeDots } from 'react-loader-spinner';
@@ -28,59 +31,73 @@ const Phonebook = () => {
   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    allContacts?.some((item: typeof initialState) => item.name === contact.name)
-      ? toast.error(`${contact.name} is already in contacts`)
-      : addContact(contact);
+    if (allContacts?.some((item: typeof initialState) => {
+      return item.name === contact.name;
+    })) {
+      toast.error(`${contact.name} is already in contacts`);
+    } else {
+      addContact(contact);
+    }
   };
 
   useEffect(() => {
-    isAdded && toast.success(`${contact.name} has successfully added`);
+    if (isAdded) {
+      toast.success(`${contact.name} has successfully added`);
+    }
     setContact(initialState);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAdded]);
 
   useEffect(() => {
-    isError && toast.error(`${contact.name} can't be added`);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    if (isError) {
+      toast.error(`${contact.name} can't be added`);
+    }
   }, [isError]);
 
-  type ContactName = keyof typeof contact;
+  const renderNavigateToContacts = () => {
+    if (isAdded) {
+      return <Navigate to="/contacts" />;
+    }
+  };
+
+  const renderButtonContent = () => {
+    if (isAdding) {
+      return <ThreeDots ariaLabel="three-dots-loading" height={18} color="gray" />;
+    }
+    return 'add contact';
+  }
+
+  const renderFormList = () => {
+    return FORM_CONFIG.map(({ type, name: fieldName, placeholder, pattern, title, required }) => (
+      <ContactFormItem key={fieldName}>
+        <ContactFormLabel>
+          {fieldName}
+          <ContactFormInput
+            type={type}
+            title={title}
+            name={fieldName}
+            placeholder={placeholder}
+            pattern={pattern}
+            required={required}
+            value={contact[fieldName as keyof typeof contact]}
+            onChange={handleInputChange}
+          />
+        </ContactFormLabel>
+      </ContactFormItem>
+    ));
+  }
 
   return (
     <>
       <ContactFormTitle>create</ContactFormTitle>
-
       <ContactForm onSubmit={handleFormSubmit}>
         <ContactFormList>
-          {FORM_CONFIG.map(({ type, name: fieldName, placeholder, pattern, title, required }) => (
-            <ContactFormItem key={fieldName}>
-              <ContactFormLabel>
-                {fieldName}
-                <ContactFormInput
-                  type={type}
-                  title={title}
-                  name={fieldName}
-                  placeholder={placeholder}
-                  pattern={pattern}
-                  required={required}
-                  value={contact[fieldName as ContactName]}
-                  onChange={handleInputChange}
-                />
-              </ContactFormLabel>
-            </ContactFormItem>
-          ))}
+          {renderFormList()}
         </ContactFormList>
-
         <AddContactButton disabled={isAdding}>
-          {isAdding ? (
-            <ThreeDots ariaLabel="three-dots-loading" height={18} color="gray" />
-          ) : (
-            'add contact'
-          )}
+          {renderButtonContent()}
         </AddContactButton>
       </ContactForm>
-
-      {isAdded && <Navigate to="/contacts" />}
+      {renderNavigateToContacts()}
     </>
   );
 };
