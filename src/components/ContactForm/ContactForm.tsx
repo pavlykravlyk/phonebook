@@ -2,11 +2,10 @@ import { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 import {
   useAddContactMutation, useGetContactsQuery
-
 } from '../../redux/contact/contact-api';
 import FORM_CONFIG from './ContactForm.config.json';
 import { toast } from 'react-toastify';
-import { ThreeDots } from 'react-loader-spinner';
+import BeatLoader from 'react-spinners/BeatLoader';
 import {
   ContactFormTitle,
   ContactForm,
@@ -61,7 +60,7 @@ const Phonebook = () => {
 
   const renderButtonContent = () => {
     if (isAdding) {
-      return <ThreeDots ariaLabel="three-dots-loading" height={18} color="gray" />;
+      return <BeatLoader />;
     }
     return 'add contact';
   }

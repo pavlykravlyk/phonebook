@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector, useContacts } from '../../redux/hooks';
 import { getFilterValue, setFilter } from '../../redux/contact';
 import ContactListItem from './ContactListItem';
-import { ThreeDots } from 'react-loader-spinner';
+import BeatLoader from 'react-spinners/BeatLoader';
 import { ContactList, ContactMessage, Label, Input } from './ContactList.styled';
 import { AddContactButton } from '../ContactForm/ContactForm.styled';
 
@@ -10,14 +10,14 @@ const ContactsList = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const filter = useAppSelector(getFilterValue);
-  const { isLoading, isSuccess,  filteredContacts } = useContacts();
+  const { isLoading, isSuccess, filteredContacts } = useContacts();
 
   const handleChange = ({ target: { value } }: React.ChangeEvent<HTMLInputElement>) =>
     dispatch(setFilter(value));
 
   return (
     <>
-      {isLoading && <ThreeDots color="gray" height={80} width={80} />}
+      {isLoading && <BeatLoader />}
 
       {filteredContacts?.length === 0 && (
         <AddContactButton type="button" onClick={() => navigate('/create')}>

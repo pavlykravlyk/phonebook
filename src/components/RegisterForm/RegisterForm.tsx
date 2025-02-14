@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useRegisterMutation } from '../../redux/auth';
 import REGISTER_FORM_CONFIG from './RegisterForm.config.json';
 import { toast } from 'react-toastify';
-import { ThreeDots } from 'react-loader-spinner';
+import BeatLoader from "react-spinners/ClipLoader";
 import {
   RegisterTitle,
   RegisterForm,
@@ -14,7 +14,8 @@ import {
 } from './RegisterForm.styled';
 
 const Register = () => {
-  const [user, setUser] = useState({ name: '', email: '', password: '' });
+  const initiallUser = { name: '', email: '', password: '' }
+  const [user, setUser] = useState(initiallUser);
   const [addUser, { isLoading, isSuccess, isError }] = useRegisterMutation();
 
   const handleInputChange = ({ target: { name, value } }: React.ChangeEvent<HTMLInputElement>) =>
@@ -26,11 +27,14 @@ const Register = () => {
   };
 
   useEffect(() => {
-    isSuccess && setUser({ name: '', email: '', password: '' });
-    isError &&
+    if (isSuccess) {
+      setUser(initiallUser);
+    }
+    if (isError) {
       toast.error(
         'Sorry you must enter a valid name, email and password to sign up',
       );
+    }
   }, [isError, isSuccess]);
 
   return (
@@ -59,11 +63,7 @@ const Register = () => {
 
         <RegisterButton disabled={isLoading}>
           {isLoading ? (
-            <ThreeDots
-              ariaLabel="three-dots-loading"
-              height={18}
-              color="gray"
-            />
+            <BeatLoader />
           ) : (
             'sign up'
           )}

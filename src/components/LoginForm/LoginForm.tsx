@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLoginMutation } from '../../redux/auth';
 import LOGIN_FORM_CONFIG from './LoginForm.config.json';
-import { ThreeDots } from 'react-loader-spinner';
+import BeatLoader from "react-spinners/ClipLoader";
 import { toast } from 'react-toastify';
 import {
   LoginFormTitle,
@@ -26,9 +26,12 @@ const Login = () => {
   };
 
   useEffect(() => {
-    isSuccess && setUser({ email: '', password: '' });
-    isError &&
+    if (isSuccess) {
+      setUser({ email: '', password: '' });
+    }
+    if (isError) {
       toast.error('Your login attempt was not successful. Please try again');
+    }
   }, [isError, isSuccess]);
 
   return (
@@ -57,11 +60,7 @@ const Login = () => {
 
         <LoginButton disabled={isLoading}>
           {isLoading ? (
-            <ThreeDots
-              ariaLabel="three-dots-loading"
-              height={18}
-              color="gray"
-            />
+            <BeatLoader />
           ) : (
             'login'
           )}

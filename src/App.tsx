@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import { getIsRefreshing } from './redux/auth';
 import { useAppSelector, useAuth } from './redux/hooks';
 import { ToastContainer } from 'react-toastify';
-import { ThreeDots } from 'react-loader-spinner';
+import BeatLoader from "react-spinners/ClipLoader";
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 import {
@@ -29,12 +29,12 @@ const App = () => {
     <div className="App">
       <Container>
         {isRefreshing ? (
-          <ThreeDots color="gray" height={200} width={200} />
+          <BeatLoader />
         ) : (
           <>
             <Navigation />
 
-            <Suspense fallback={<ThreeDots color="gray" height={100} width={100} />}>
+            <Suspense fallback={<BeatLoader />}>
               <Section>
                 <Routes>
                   <Route path="/" element={<PublicRoute />}>
@@ -53,8 +53,8 @@ const App = () => {
                   <Route path="/create" element={<PrivateRoute />}>
                     <Route index element={<Phonebook />} />
                   </Route>
-                    
-                  <Route path="*" element={<NotFound/>}></Route>
+
+                  <Route path="*" element={<NotFound />}></Route>
                 </Routes>
               </Section>
             </Suspense>
@@ -62,7 +62,7 @@ const App = () => {
         )}
       </Container>
 
-      <ToastContainer autoClose={5000} />
+      <ToastContainer autoClose={3500} />
     </div>
   );
 };

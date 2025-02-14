@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDeleteContactMutation, useUpdateContactMutation } from '../../redux/contact/contact-api';
-import { ThreeDots } from 'react-loader-spinner';
+import BeatLoader from 'react-spinners/BeatLoader';
 import { toast } from 'react-toastify';
 import FORM_CONFIG from '../ContactForm/ContactForm.config.json';
 import {
@@ -126,7 +126,7 @@ const ContactListItem = ({ id, name, number }: ContactListItemProps) => {
   const renderContactDetails = () => {
     const renderDeleteButtonContent = () => {
       if (isDeleting) {
-        return <ThreeDots ariaLabel="three-dots-loading" height={20} width={70} color="gray" />;
+        return <BeatLoader />;
       } else {
         return 'delete';
       }
